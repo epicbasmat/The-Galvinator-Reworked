@@ -11,25 +11,24 @@ class Generators extends JSONData {
     }
 
     async createGuildData() { 
-
         var dir = await new Promise((resolve, reject) => {
             fs.mkdir(`./Guilds/data/${this.guildID}/commands/`, {recursive: true}, (err) => {
-            if (err) { 
-                reject (new FileIOError(`Failed to create guild file: ${err}`))
-            } else {
-                resolve(new Create(`Created ${this.guildID}'s file structure`));
-            }
+                if (err) { 
+                    reject (new FileIOError(`Failed to create guild file: ${err}`))
+                } else {
+                    resolve(new Create(`Created ${this.guildID}'s file structure`));
+                }
             });
         })
 
-        if (dir) {
+        if (dir.Type == "Create") {
             let loc = new Directories(this.guildID);
             this.fileLoc = loc.guildTemplate();
             this.data = await this.readJSONData();
             this.fileLoc = loc.data();
             this.writeJSONData();
-            
-        } 
+        }
+        return dir.Message
     }
 
     async createCommandData() {

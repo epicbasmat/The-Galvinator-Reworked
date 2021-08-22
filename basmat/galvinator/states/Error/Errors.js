@@ -12,7 +12,15 @@ class JSONError extends Error {
     }
 }
 
+class DiscordJSError extends Error { 
+    constructor(message) { 
+        super(message);
+        this.name = "DiscordJSError";
+    }
+}
+
 module.exports = {
     FileIOError, 
-    JSONError
+    JSONError,
+    DiscordJSError
 }
