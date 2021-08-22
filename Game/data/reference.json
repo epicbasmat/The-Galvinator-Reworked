@@ -1,0 +1,44 @@
+{
+  "data": {
+    "1f7e9": {
+      "unicodeChar": "🟩",
+      "name": "none",
+      "walkable": true,
+      "encounterChance": 1,
+      "interactable": {
+        "itemToInteract": "none",
+        "droppedItem": "itemtest",
+        "referencedEntity": "none"
+      },
+      "spawnableEnemies": {
+        "test": {
+          "jsonMobEntity": {
+            "unicodeChar": "sus!",
+            "damage": 42320,
+            "missChance": 0,
+            "evasionChance": 73,
+            "rarity": 102
+          }
+        },
+        "test2": {
+          "jsonMobEntity": {
+            "unicodeChar": "sus!",
+            "damage": 42320,
+            "missChance": 0,
+            "evasionChance": 73,
+            "rarity": 102
+          }
+        },
+        "test3": {
+          "jsonMobEntity": {
+            "unicodeChar": "sus!",
+            "damage": 42320,
+            "missChance": 0,
+            "evasionChance": 73,
+            "rarity": 102
+          }
+        }
+      }
+    }
+  }
+}
