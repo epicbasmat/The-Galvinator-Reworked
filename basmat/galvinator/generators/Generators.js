@@ -1,8 +1,9 @@
 const { JSONData } = require("../jsonaccess/JSONData");
 const { Directories } = require("../dir/Directories");
 const { UUID } = require("../uuid/UUID");
-const { fs } = require("fs");
+const fs = require("fs");
 const { FileIOError } = require("../states/Error/Errors");
+const { Create } = require("../states/Success/Success");
 
 class Generators extends JSONData {
     constructor(guildID, command) {
@@ -10,17 +11,25 @@ class Generators extends JSONData {
     }
 
     async createGuildData() { 
-        fs.mkDir(`./Guilds/data/${this.guildID}/commands/`, {recursive: true}, (err) => {
+
+        var dir = await new Promise((resolve, reject) => {
+            fs.mkdir(`./Guilds/data/${this.guildID}/commands/`, {recursive: true}, (err) => {
             if (err) { 
-                return (new FileIOError(`Failed to create guild file: ${err}`));
+                reject (new FileIOError(`Failed to create guild file: ${err}`))
             } else {
-                let loc = new Directories();
-                this.fileLoc = loc.commandTemplate();
-                this.data = await this.readJSONData();
-                this.fileLoc = loc.data();
-                this.writeJSONData();
+                resolve(new Create(`Created ${this.guildID}'s file structure`));
             }
-        });
+            });
+        })
+
+        if (dir) {
+            let loc = new Directories(this.guildID);
+            this.fileLoc = loc.guildTemplate();
+            this.data = await this.readJSONData();
+            this.fileLoc = loc.data();
+            this.writeJSONData();
+            
+        } 
     }
 
     async createCommandData() {
