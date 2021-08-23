@@ -2,7 +2,7 @@ class Success {
     constructor(message, type) { 
         this.type = type
         this.message = message;
-        return ({"Type": this.type, "Message": "Success: " + this.message});
+        return ({"Type": this.type, "Result": this.message});
     }
 }
 
@@ -26,7 +26,13 @@ class Append extends Success {
 
 class Edit extends Success { 
     constructor(message) { 
-        super(message, "Success");
+        super(message, "Edit");
+    }
+}
+
+class Read extends Success { 
+    constructor(message) { 
+        super(message, "Read");
     }
 }
 
@@ -35,5 +41,6 @@ module.exports = {
     Create,
     Delete,
     Append, 
-    Edit
+    Edit,
+    Read
 }

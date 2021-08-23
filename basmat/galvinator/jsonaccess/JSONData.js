@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { Read, Create } = require("../states/Success/Success");
 
 class JSONData {
     constructor(fileLoc, guildID, command, data, identifier) { 
@@ -15,7 +16,7 @@ class JSONData {
                 if (error) { 
                     reject(error)
                 } else {
-                    resolve(JSON.parse(result));
+                    resolve(new Read(JSON.parse(result)));
                 }
             })
         })
@@ -27,7 +28,7 @@ class JSONData {
                 if (error) { 
                     reject(error);
                 } else {
-                    resolve("happy")
+                    resolve(new Create("Data written"))
                 }
             })
         })

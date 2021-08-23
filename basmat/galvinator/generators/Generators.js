@@ -24,7 +24,7 @@ class Generators extends JSONData {
         if (dir.Type == "Create") {
             let loc = new Directories(this.guildID);
             this.fileLoc = loc.guildTemplate();
-            this.data = await this.readJSONData();
+            this.data = await this.readJSONData().Result;
             this.fileLoc = loc.data();
             this.writeJSONData();
         }
@@ -34,11 +34,11 @@ class Generators extends JSONData {
     async createCommandData() {
         let uuid = UUID.uuidv4();
         let dir = new Directories(this.guildID, uuid);
-        this.data = await this.readJSONData();
+        this.data = await this.readJSONData().Result;
         this.data.commands[this.command] = uuid;
         this.writeJSONData();
         this.fileLoc = dir.commandTemplate();
-        this.data = await this.readJSONData();
+        this.data = await this.readJSONData().Result;
         this.fileLoc = dir.identity();
         this.writeJSONData();
     }

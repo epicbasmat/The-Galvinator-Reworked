@@ -1,5 +1,6 @@
 const {JSONError} = require("../states/Error/Errors.js");
 const {JSONData} = require("../jsonaccess/JSONData");
+const { Read } = require("../states/Success/Success.js");
 
 class Directories {
     constructor(guildID, uuid) { 
@@ -33,9 +34,13 @@ class Directories {
     }
 
     async specificCommand (command) { //Returns UUID path of command issued
+        let data = await new JSONData(this.data(this.guildID)).readJSONData().Result;
         return new Promise((resolve, reject) => {
-            var data = new JSONData(this.data(this.guildID)).readJSONData();
-            resolve(`./guilds/data/${this.guildID}/commands/${data.commands[command]}.json`)
+            try { 
+                resolve(new Read(`./guilds/data/${this.guildID}/commands/${data.commands[command]}.json`))
+            } catch (err) { 
+                reject(new JSONError(err));
+            }
         })
     }
 }
