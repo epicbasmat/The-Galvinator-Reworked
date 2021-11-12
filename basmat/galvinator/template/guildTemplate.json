@@ -1,0 +1,14 @@
+{ 
+    "config": {
+        "dadChance": 0,
+        "dadMode": true,
+        "updateChannel": true,
+        "prefix": "!"
+    },
+    "commands": {
+
+    }, 
+    "enforced": {
+        "allowedCommandLimit": 0 
+    }
+}

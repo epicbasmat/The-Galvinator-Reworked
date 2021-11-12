@@ -1,0 +1,9 @@
+{   
+    "name": { 
+        "unicodeChar": "none",
+        "damage" : 0,
+        "missChance": 0,
+        "evasionChance": 0,
+        "rarity": 0
+    }
+}

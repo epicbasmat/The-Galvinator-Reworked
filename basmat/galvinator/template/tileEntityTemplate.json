@@ -1,0 +1,14 @@
+{
+    "unicodeChar": "none",
+    "name": "none",
+    "walkable": false,
+    "encounterChance": 0,
+    "interactable": {
+        "itemToInteract": "none",
+        "droppedItem": "none", 
+        "referencedEntity": "none"
+    },
+    "spawnableEnemies": {
+
+    }
+}
